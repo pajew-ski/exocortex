@@ -14,20 +14,28 @@ The system operates on a triadic architecture, ensuring a strict separation of c
 
 ```mermaid
 graph TD
-    A["Physical Layer<br/>(The Sensorium)"] -->|Raw State Data| B("Orchestrator<br/>Universal Decompiler")
-    B -->|Semantic Triples| C["Logic Layer<br/>(The Cortex)"]
+    A["Physical Layer<br/>(The Sensorium)"] -->|Raw State Data| B("Data Layer<br/>(The Archive)")
+    B -->|Structured Events| C("Logic Layer<br/>(The Cortex)")
     C -->|Inference & Validation| D["AI Inference Engine<br/>(Causal Models)"]
-    D -->|Symbolic Commands| B
-    B -->|Actuation Signals| A
+    D -->|Symbolic Commands| C
+    C -->|Actuation Signals| A
 ```
 
 ### 2.1 The Physical Layer (The Sensorium)
 **Interface:** Home Assistant API
 **Role:** Raw Data Ingestion & Physical Actuation.
 **Function:** Acts as the peripheral nervous system. Sensors (Input) capture environmental state vectors; Actuators (Output) enforce the will of the system upon physical reality.
-**Key Integration:** Websocket connection to local Home Assistant instance for real-time state mirroring.
 
-### 2.2 The Logic Layer (The Cortex)
+### 2.2 The Data Layer (The Archive)
+**Tech Stack:** Polars, DuckDB, LanceDB, DVC
+**Role:** High-Performance State History & Vector Store.
+**Function:**
+- **Polars:** Ultra-fast dataframe processing for incoming state vectors.
+- **DuckDB:** Analytical queries on historical state data.
+- **LanceDB:** Vector storage for semantic search and context retrieval.
+- **DVC:** version control for large datasets, ensuring data sovereignty and reproducibility.
+
+### 2.3 The Logic Layer (The Cortex)
 **Tech Stack:** RDF, SPARQL, SHACL
 **Role:** Semantic Grounding & State Maintenance.
 **Function:** Transforms ambiguous sensor data into structured knowledge graphs.

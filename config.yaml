@@ -1,0 +1,22 @@
+name: "Exocortex"
+slug: "exocortex"
+version: "0.1.0"
+description: "Sovereign AI Engine for Home Assistant using Polars, DuckDB, and LanceDB."
+url: "https://github.com/your-repo/exocortex-engine"
+startup: "services"
+arch:
+  - aarch64
+  - amd64
+init: false
+map:
+  - "share:rw"
+options:
+  git_repo_url: ""
+  minio_endpoint: ""
+  minio_access_key: ""
+  minio_secret_key: ""
+schema:
+  git_repo_url: str
+  minio_endpoint: str
+  minio_access_key: str
+  minio_secret_key: str
